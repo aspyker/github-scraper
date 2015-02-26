@@ -76,7 +76,7 @@ object QueryGitHub {
         "name" -> repo.getName(),
         "forks" -> repo.getForks(),
         "stars" -> repo.getWatchers(),
-        "numContributors" -> daysSinceLastCommit,
+        "numContributors" -> contributorEmails.length,
         "issues" -> Json.obj(
             "openCount" -> repo.getOpenIssueCount(),
             "closedCount" -> closedIssues.size(),
