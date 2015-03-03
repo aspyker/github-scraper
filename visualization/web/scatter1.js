@@ -12,7 +12,9 @@ function addGraph(divname, xAxisLabel, yAxisLabel, jsonRelUrl, bubbleTTfirst, bu
 	}
 	
 	addGraphFunction = function(xMax, yMax, divname) {
-	  var chart = nv.models.scatterChart().color(d3.scale.category10().range());
+	  var chart = nv.models.scatterChart()
+	  	.color(d3.scale.category10().range());
+	  
 	  chart.xAxis.axisLabel(xAxisLabel);
 	  chart.yAxis.axisLabel(yAxisLabel);
 	  chart.showLegend(false);

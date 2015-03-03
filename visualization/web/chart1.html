@@ -100,7 +100,18 @@
           <input type="number" class="form-control" id="maxStars" value="1500">
         </div>
         </div>
-        <div class="col-md-4 v-center"><button type="button" class="btn btn-default" id="zoomButton">Zoom</button></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="sel1">Select data file:</label>
+            <select class="form-control" id="dataFile">
+              <option>asOf-20150225.json</option>
+              <option>facebook-min-asOf-20150303.json</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4"><button type="button" class="btn btn-default" id="zoomButton">Redisplay</button></div>
       </div>
       </form>
       </div>
@@ -143,11 +154,12 @@
   	      drawGraphs(maxForks, maxStars);
         })
         function drawGraphs(maxForks, maxStars) {
-          addGraph('chart1', 'forks', 'stars', 'asOf-20150225.json', '(', ' contributors)', 'numContributors', maxForks, maxStars);
-          addGraph('chart2', 'forks', 'stars', 'asOf-20150225.json', '(', ' open issues)', 'issues.openCount', maxForks, maxStars);
-          addGraph('chart3', 'forks', 'stars', 'asOf-20150225.json', '(', ' open pull requests)', 'pullRequests.openCount', maxForks, maxStars);
-          addGraph('chart4', 'forks', 'stars', 'asOf-20150225.json', '(', ' days to close issues)', 'issues.avgTimeToCloseInDays');
-          addGraph('chart5', 'forks', 'stars', 'asOf-20150225.json', '(', ' days to close pull requests)', 'pullRequests.avgTimeToCloseInDays');
+          var jsonFile = d3.select("#dataFile").node().value;
+          addGraph('chart1', 'forks', 'stars', jsonFile, '(', ' contributors)', 'numContributors', maxForks, maxStars);
+          addGraph('chart2', 'forks', 'stars', jsonFile, '(', ' open issues)', 'issues.openCount', maxForks, maxStars);
+          addGraph('chart3', 'forks', 'stars', jsonFile, '(', ' open pull requests)', 'pullRequests.openCount', maxForks, maxStars);
+          addGraph('chart4', 'forks', 'stars', jsonFile, '(', ' days to close issues)', 'issues.avgTimeToCloseInDays');
+          addGraph('chart5', 'forks', 'stars', jsonFile, '(', ' days to close pull requests)', 'pullRequests.avgTimeToCloseInDays');
         }
       </script>
     </div>
